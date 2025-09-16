@@ -5,7 +5,7 @@ import PricingOverview from '@/components/PricingOverview'
 import FeaturesSection from '@/components/FeaturesSection'
 import HeroReveal from '@/components/HeroReveal'
 import AddonsHighlight from '@/components/AddonsHighlight'
-import FinalCTA from '@/components/FinalCTA'
+import ContactForm from '@/components/ContactForm'
 import FAQ from '@/components/FAQ'
 
 export default function HomePage() {
@@ -35,7 +35,7 @@ export default function HomePage() {
           <section id="faq">
             <FAQ />
           </section>
-          <FinalCTA />
+          <ContactForm />
         </Layout>
       </div>
     </div>
