@@ -8,6 +8,7 @@ export default function ParallaxHero() {
   const [isScrolled, setIsScrolled] = useState(false)
   const { scrollY } = useScroll()
   const MAX_PHASE_SCROLL = 750
+  const [mobileScaleFactor, setMobileScaleFactor] = useState(1)
   
   // Transform values for parallax effects
   const rawLogoScale = useTransform(scrollY, [0, 450], [1, 0.15])
@@ -27,6 +28,7 @@ export default function ParallaxHero() {
   const rawLeftLeafX = useTransform(scrollY, [0, 350, MAX_PHASE_SCROLL], [-10, 120, 0])
   const leftLeafY = useSpring(rawLeftLeafY, springCfg)
   const leftLeafScale = useSpring(rawLeftLeafScale, springCfg)
+  const leftLeafScaleAdj = useTransform(leftLeafScale, (v) => v * mobileScaleFactor)
   const leftLeafOpacity = useSpring(rawLeftLeafOpacity, springCfg)
   const leftLeafRotate = useSpring(rawLeftLeafRotate, springCfg)
   const leftLeafX = useSpring(rawLeftLeafX, springCfg)
@@ -39,6 +41,7 @@ export default function ParallaxHero() {
   const rawRightLeafX = useTransform(scrollY, [0, 350, MAX_PHASE_SCROLL], [10, -120, 0])
   const rightLeafY = useSpring(rawRightLeafY, springCfg)
   const rightLeafScale = useSpring(rawRightLeafScale, springCfg)
+  const rightLeafScaleAdj = useTransform(rightLeafScale, (v) => v * mobileScaleFactor)
   const rightLeafOpacity = useSpring(rawRightLeafOpacity, springCfg)
   const rightLeafRotate = useSpring(rawRightLeafRotate, springCfg)
   const rightLeafX = useSpring(rawRightLeafX, springCfg)
@@ -54,6 +57,15 @@ export default function ParallaxHero() {
     
     return () => unsubscribe()
   }, [scrollY])
+
+  useEffect(() => {
+    const handle = () => {
+      setMobileScaleFactor(window.innerWidth < 640 ? 0.8 : 1)
+    }
+    handle()
+    window.addEventListener('resize', handle)
+    return () => window.removeEventListener('resize', handle)
+  }, [])
 
   // Allow native scrolling (no interception)
 
@@ -73,7 +85,7 @@ export default function ParallaxHero() {
           x: leftLeafX,
           y: leftLeafY,
           opacity: leftLeafOpacity,
-          scale: leftLeafScale,
+          scale: leftLeafScaleAdj,
           rotate: leftLeafRotate,
           willChange: 'transform, opacity',
           transform: 'translateZ(0)'
@@ -96,7 +108,7 @@ export default function ParallaxHero() {
           x: rightLeafX,
           y: rightLeafY,
           opacity: rightLeafOpacity,
-          scale: rightLeafScale,
+          scale: rightLeafScaleAdj,
           rotate: rightLeafRotate,
           willChange: 'transform, opacity',
           transform: 'translateZ(0)'

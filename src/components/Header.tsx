@@ -20,7 +20,8 @@ export default function Header() {
   // Delay header appearance until hero leaves are gone
   const APPEAR_START = 750
   const APPEAR_END = 850
-  const HIDE_THRESHOLD = 700 // hysteresis: fully hide sooner on upward scroll
+  // Increase hysteresis so fast upward scrolls don't flash the header
+  const HIDE_THRESHOLD = 680
   const logoScale = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
   const logoOpacity = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
 
