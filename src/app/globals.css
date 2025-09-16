@@ -4,6 +4,12 @@
 @tailwind utilities;
 
 @layer base {
+  /* Prevent layout shift from scrollbar appearing/disappearing */
+  html {
+    scrollbar-gutter: stable both-edges;
+    overflow-y: auto;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -55,6 +61,15 @@
     }
   }
 }
+
+/* Custom scrollbar (WebKit) */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.05); }
+::-webkit-scrollbar-thumb { background: rgba(94, 139, 126, 0.7); border-radius: 9999px; border: 2px solid rgba(255,255,255,0.5); }
+::-webkit-scrollbar-thumb:hover { background: rgba(94, 139, 126, 0.9); }
+
+/* Firefox */
+* { scrollbar-width: thin; scrollbar-color: rgba(94,139,126,0.8) rgba(15,23,42,0.05); }
 
 @layer components {
   .btn {
