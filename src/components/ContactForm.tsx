@@ -94,7 +94,7 @@ export default function ContactForm() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20"
+            className="bg-white rounded-2xl p-8 shadow-xl"
           >
             {/* Top gradient stripe */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pine-400 via-campfire-400 to-twilight-400 rounded-t-2xl" />
@@ -102,8 +102,8 @@ export default function ContactForm() {
             <form action="https://formspree.io/f/mblavdng" method="POST" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="block text-sm font-semibold text-white">
-                    Full Name <span className="text-red-400">*</span>
+                  <label htmlFor="name" className="block text-sm font-semibold text-dark">
+                    Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -113,13 +113,13 @@ export default function ContactForm() {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-semibold text-white">
-                    Email Address <span className="text-red-400">*</span>
+                  <label htmlFor="email" className="block text-sm font-semibold text-dark">
+                    Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -129,13 +129,13 @@ export default function ContactForm() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="john@company.com"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="company" className="block text-sm font-semibold text-white">
+                <label htmlFor="company" className="block text-sm font-semibold text-dark">
                   Company Name
                 </label>
                 <input
@@ -145,13 +145,13 @@ export default function ContactForm() {
                   value={formData.company}
                   onChange={handleInputChange}
                   placeholder="Your Company Ltd."
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="service" className="block text-sm font-semibold text-white">
-                  Service Type <span className="text-red-400">*</span>
+                <label htmlFor="service" className="block text-sm font-semibold text-dark">
+                  Service Type <span className="text-red-500">*</span>
                 </label>
                 <select
                   id="service"
@@ -162,18 +162,18 @@ export default function ContactForm() {
                     handleInputChange(e)
                     updateMessage()
                   }}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200 appearance-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200 appearance-none cursor-pointer"
                 >
-                  <option value="" className="bg-dark text-white">Select a service...</option>
-                  <option value="Basic Website" className="bg-dark text-white">Basic Website</option>
-                  <option value="e-Commerce Store" className="bg-dark text-white">e-Commerce Store</option>
-                  <option value="Custom Software" className="bg-dark text-white">Custom Software</option>
+                  <option value="" className="bg-white text-dark">Select a service...</option>
+                  <option value="Basic Website" className="bg-white text-dark">Basic Website</option>
+                  <option value="e-Commerce Store" className="bg-white text-dark">e-Commerce Store</option>
+                  <option value="Custom Software" className="bg-white text-dark">Custom Software</option>
                 </select>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="block text-sm font-semibold text-white">
-                  Project Details <span className="text-red-400">*</span>
+                <label htmlFor="message" className="block text-sm font-semibold text-dark">
+                  Project Details <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -183,7 +183,7 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Hi SaaSquatch team, I'm looking for a..."
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200 resize-vertical"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200 resize-vertical"
                 />
               </div>
 
