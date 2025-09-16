@@ -111,3 +111,28 @@
     background-clip: text;
   }
 }
+
+/* Decorative wavy backgrounds inspired by the logo palette */
+.section-wave-1 {
+  /* Pine → Campfire soft bands */
+  background-image:
+    radial-gradient(1200px 320px at -10% 0%, rgba(94,139,126,0.12) 0%, rgba(94,139,126,0.00) 60%),
+    radial-gradient(1200px 320px at 110% 100%, rgba(242,166,90,0.12) 0%, rgba(242,166,90,0.00) 60%);
+  background-color: #ffffff;
+}
+
+.section-wave-2 {
+  /* Twilight → Pine diagonal waves */
+  background-image:
+    radial-gradient(1000px 300px at 130% -10%, rgba(142,108,239,0.10) 0%, rgba(142,108,239,0.00) 60%),
+    radial-gradient(900px 280px at -30% 110%, rgba(94,139,126,0.10) 0%, rgba(94,139,126,0.00) 60%);
+  background-color: #f8fafc;
+}
+
+.section-wave-3 {
+  /* Campfire → Twilight soft overlay */
+  background-image:
+    radial-gradient(900px 260px at 0% 30%, rgba(242,166,90,0.10) 0%, rgba(242,166,90,0.00) 60%),
+    radial-gradient(900px 260px at 100% 70%, rgba(142,108,239,0.10) 0%, rgba(142,108,239,0.00) 60%);
+  background-color: #ffffff;
+}

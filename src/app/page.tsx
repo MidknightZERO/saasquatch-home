@@ -11,14 +11,18 @@ export default function HomePage() {
   return (
     <div>
       <ParallaxHero />
-      <div style={{ background: 'linear-gradient(to bottom, #f8fafc, #e2e8f0)' }}>
+      <div className="section-wave-1">
         <Layout>
           {/* Why Choose SaaSquatch (Features) with hero-synced reveal */}
           <HeroReveal>
-            <FeaturesSection />
+            <div className="section-wave-2">
+              <FeaturesSection />
+            </div>
           </HeroReveal>
           {/* Choose Your Own Adventure (Pricing Overview) */}
-          <PricingOverview />
+          <div className="section-wave-3">
+            <PricingOverview />
+          </div>
           {/* Customer Testimonials */}
           <TestimonialCarousel />
           <AddonsHighlight />
