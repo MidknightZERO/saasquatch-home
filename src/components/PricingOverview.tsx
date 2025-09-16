@@ -13,11 +13,19 @@ export default function PricingOverview() {
     { start: 1480, end: 1630 },
     { start: 1660, end: 1810 },
   ]
+
+  // Prepare transforms outside of map
+  const p0Opacity = useTransform(scrollY, [windows[0].start, windows[0].end], [0, 1])
+  const p0Y = useTransform(scrollY, [windows[0].start, windows[0].end], [60, 0])
+  const p1Opacity = useTransform(scrollY, [windows[1].start, windows[1].end], [0, 1])
+  const p1Y = useTransform(scrollY, [windows[1].start, windows[1].end], [60, 0])
+  const p2Opacity = useTransform(scrollY, [windows[2].start, windows[2].end], [0, 1])
+  const p2Y = useTransform(scrollY, [windows[2].start, windows[2].end], [60, 0])
   const lockedRef = useRef(false)
   useEffect(() => {
     const unsub = scrollY.on('change', (v) => {
       // Lock briefly when each card begins
-      windows.forEach((w, i) => {
+      windows.forEach((w) => {
         if (!lockedRef.current && v >= w.start && v <= w.start + 40) {
           lockedRef.current = true
           const prev = document.body.style.overflow
@@ -30,7 +38,7 @@ export default function PricingOverview() {
       })
     })
     return () => unsub()
-  }, [scrollY])
+  }, [scrollY, windows])
 
   return (
     <section className="section bg-gray-50">
@@ -46,9 +54,8 @@ export default function PricingOverview() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {tiers.map(([key, tier], index) => {
-            const w = windows[index]
-            const opacity = useTransform(scrollY, [w.start, w.end], [0, 1])
-            const y = useTransform(scrollY, [w.start, w.end], [60, 0])
+            const opacity = [p0Opacity, p1Opacity, p2Opacity][index]
+            const y = [p0Y, p1Y, p2Y][index]
             return (
               <motion.div
                 key={key}
