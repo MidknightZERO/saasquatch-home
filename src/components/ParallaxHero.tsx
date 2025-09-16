@@ -8,8 +8,6 @@ export default function ParallaxHero() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isLeafPhase, setIsLeafPhase] = useState(true)
   const { scrollY } = useScroll()
-  const rafIdRef = useRef<number | null>(null)
-  const targetScrollRef = useRef<number>(0)
   const MAX_PHASE_SCROLL = 750
   
   // Transform values for parallax effects
@@ -21,20 +19,30 @@ export default function ParallaxHero() {
   const logoY = useSpring(rawLogoY, springCfg)
   const logoOpacity = useSpring(rawLogoOpacity, springCfg)
   
-  // Leaf animations - keep growing until fade
-  const rawLeftLeafY = useTransform(scrollY, [0, MAX_PHASE_SCROLL], [0, -420])
-  const rawLeftLeafScale = useTransform(scrollY, [0, 240, 560], [1, 1.6, 2.6])
-  const rawLeftLeafOpacity = useTransform(scrollY, [0, 500, MAX_PHASE_SCROLL], [1, 1, 0])
+  // Leaf animations - keep growing until fade, with offset speeds and rotation
+  const rawLeftLeafY = useTransform(scrollY, [0, MAX_PHASE_SCROLL], [8, -420])
+  const rawLeftLeafScale = useTransform(scrollY, [0, 260, 600], [2.0, 2.5, 3.0])
+  const rawLeftLeafOpacity = useTransform(scrollY, [0, 520, MAX_PHASE_SCROLL], [1, 1, 0])
+  const rawLeftLeafRotate = useTransform(scrollY, [0, MAX_PHASE_SCROLL], [-45, 0])
+  // Mirror the right-leaf sweep: drift rightwards then return
+  const rawLeftLeafX = useTransform(scrollY, [0, 350, MAX_PHASE_SCROLL], [-10, 120, 0])
   const leftLeafY = useSpring(rawLeftLeafY, springCfg)
   const leftLeafScale = useSpring(rawLeftLeafScale, springCfg)
   const leftLeafOpacity = useSpring(rawLeftLeafOpacity, springCfg)
+  const leftLeafRotate = useSpring(rawLeftLeafRotate, springCfg)
+  const leftLeafX = useSpring(rawLeftLeafX, springCfg)
   
-  const rawRightLeafY = useTransform(scrollY, [0, MAX_PHASE_SCROLL], [0, -380])
-  const rawRightLeafScale = useTransform(scrollY, [0, 240, 560], [1, 1.5, 2.3])
+  const rawRightLeafY = useTransform(scrollY, [0, MAX_PHASE_SCROLL], [8, -380])
+  const rawRightLeafScale = useTransform(scrollY, [0, 200, 540], [2.2, 2.8, 3.4])
   const rawRightLeafOpacity = useTransform(scrollY, [0, 500, MAX_PHASE_SCROLL], [1, 1, 0])
+  const rawRightLeafRotate = useTransform(scrollY, [0, MAX_PHASE_SCROLL], [45, 0])
+  // Nudge right leaf further left mid-scroll, then return as fade begins
+  const rawRightLeafX = useTransform(scrollY, [0, 350, MAX_PHASE_SCROLL], [10, -120, 0])
   const rightLeafY = useSpring(rawRightLeafY, springCfg)
   const rightLeafScale = useSpring(rawRightLeafScale, springCfg)
   const rightLeafOpacity = useSpring(rawRightLeafOpacity, springCfg)
+  const rightLeafRotate = useSpring(rawRightLeafRotate, springCfg)
+  const rightLeafX = useSpring(rawRightLeafX, springCfg)
   
   // Background parallax
   const rawBackgroundY = useTransform(scrollY, [0, MAX_PHASE_SCROLL], [0, -220])
@@ -49,35 +57,7 @@ export default function ParallaxHero() {
     return () => unsubscribe()
   }, [scrollY])
 
-  // Control scroll behavior during leaf phase (smoothed with rAF)
-  useEffect(() => {
-    const animate = () => {
-      const current = window.scrollY
-      const target = Math.min(targetScrollRef.current, MAX_PHASE_SCROLL)
-      const delta = (target - current) * 0.2
-      if (Math.abs(delta) > 0.5) {
-        window.scrollTo(0, current + delta)
-        rafIdRef.current = requestAnimationFrame(animate)
-      } else {
-        if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current)
-        rafIdRef.current = null
-      }
-    }
-
-    const handleWheel = (e: WheelEvent) => {
-      if (isLeafPhase && scrollY.get() < MAX_PHASE_SCROLL) {
-        e.preventDefault()
-        targetScrollRef.current = Math.max(0, Math.min(MAX_PHASE_SCROLL, window.scrollY + e.deltaY))
-        if (!rafIdRef.current) rafIdRef.current = requestAnimationFrame(animate)
-      }
-    }
-
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    return () => {
-      window.removeEventListener('wheel', handleWheel)
-      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current)
-    }
-  }, [isLeafPhase, scrollY])
+  // Allow native scrolling (previous interception removed to avoid lockups)
 
   return (
     <div className="relative h-screen overflow-hidden bg-gradient-to-br from-pine-50 to-campfire-50">
@@ -92,42 +72,46 @@ export default function ParallaxHero() {
       {/* Left Leaf */}
       <motion.div
         style={{
+          x: leftLeafX,
           y: leftLeafY,
           opacity: leftLeafOpacity,
           scale: leftLeafScale,
-          willChange: 'transform',
+          rotate: leftLeafRotate,
+          willChange: 'transform, opacity',
           transform: 'translateZ(0)'
         }}
         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/3 z-20"
       >
-        <Image
-          src="/1.svg"
+        <img
+          src="/left-cropped.svg"
           alt="Decorative leaves"
           width={500}
           height={700}
-          className="w-auto h-[700px] object-contain"
-          priority
+          className="w-auto h-[700px] select-none"
+          draggable={false}
         />
       </motion.div>
 
       {/* Right Leaf */}
       <motion.div
         style={{
+          x: rightLeafX,
           y: rightLeafY,
           opacity: rightLeafOpacity,
           scale: rightLeafScale,
-          willChange: 'transform',
+          rotate: rightLeafRotate,
+          willChange: 'transform, opacity',
           transform: 'translateZ(0)'
         }}
         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/3 z-20"
       >
-        <Image
-          src="/2.svg"
+        <img
+          src="/right-cropped.svg"
           alt="Decorative leaves"
           width={500}
           height={700}
-          className="w-auto h-[700px] object-contain"
-          priority
+          className="w-auto h-[700px] select-none"
+          draggable={false}
         />
       </motion.div>
 

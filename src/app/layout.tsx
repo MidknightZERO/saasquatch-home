@@ -18,6 +18,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'SaaSquatch - Websites that grow with your business',
   description: 'From fast static sites to full e-commerce and custom software—built, hosted, and supported by SaaSquatch.',
+  icons: {
+    icon: '/Logo.svg',
+    shortcut: '/Logo.svg',
+    apple: '/Logo.svg',
+  },
   keywords: ['web development', 'website hosting', 'e-commerce', 'custom software', 'UK web design'],
   authors: [{ name: 'SaaSquatch' }],
   creator: 'SaaSquatch',

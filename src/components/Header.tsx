@@ -17,13 +17,23 @@ export default function Header() {
   const [showLogo, setShowLogo] = useState(false)
   const { scrollY } = useScroll()
   
-  // Transform the logo from hero to header
-  const logoScale = useTransform(scrollY, [300, 400], [0, 1])
-  const logoOpacity = useTransform(scrollY, [300, 400], [0, 1])
+  // Delay header appearance until hero leaves are gone
+  const APPEAR_START = 750
+  const APPEAR_END = 850
+  const HIDE_THRESHOLD = 700 // hysteresis: fully hide sooner on upward scroll
+  const logoScale = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
+  const logoOpacity = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
 
   useEffect(() => {
     const unsubscribe = scrollY.on('change', (latest) => {
-      setShowLogo(latest > 300)
+      setShowLogo((prev) => {
+        if (prev) {
+          // currently visible: hide only once we cross below hide threshold
+          return latest > HIDE_THRESHOLD
+        }
+        // currently hidden: show only after appear threshold
+        return latest > APPEAR_START
+      })
     })
     
     return () => unsubscribe()
@@ -37,6 +47,7 @@ export default function Header() {
         y: showLogo ? 0 : -100
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
+      style={{ visibility: showLogo ? 'visible' : 'hidden' }}
       className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">

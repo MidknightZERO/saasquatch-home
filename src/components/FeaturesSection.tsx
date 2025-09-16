@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const features = [
   {
@@ -33,6 +33,13 @@ const features = [
 ]
 
 export default function FeaturesSection() {
+  const { scrollY } = useScroll()
+  // Staggered windows with gaps to create a perceptible pause between cards
+  const windows = [
+    { start: 650, end: 800 },   // Card 1
+    { start: 850, end: 1000 },  // Card 2 (begins ~2 wheel notches later)
+    { start: 1050, end: 1200 }, // Card 3
+  ]
   return (
     <section className="section bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,25 +53,28 @@ export default function FeaturesSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="text-center group"
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-pine-400 to-campfire-400 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-heading font-semibold text-dark mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+          {features.map((feature, index) => {
+            const win = windows[index]
+            const opacity = useTransform(scrollY, [win.start, win.end], [0, 1])
+            const y = useTransform(scrollY, [win.start, win.end], [60, 0])
+            return (
+              <motion.div
+                key={feature.title}
+                style={{ opacity, y }}
+                className="text-center group"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-pine-400 to-campfire-400 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-dark mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
