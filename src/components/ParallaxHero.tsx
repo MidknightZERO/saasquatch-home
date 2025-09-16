@@ -6,7 +6,6 @@ import Image from 'next/image'
 
 export default function ParallaxHero() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isLeafPhase, setIsLeafPhase] = useState(true)
   const { scrollY } = useScroll()
   const MAX_PHASE_SCROLL = 750
   
@@ -51,7 +50,6 @@ export default function ParallaxHero() {
   useEffect(() => {
     const unsubscribe = scrollY.on('change', (latest) => {
       setIsScrolled(latest > 100)
-      setIsLeafPhase(latest < MAX_PHASE_SCROLL)
     })
     
     return () => unsubscribe()
