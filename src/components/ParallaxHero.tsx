@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function ParallaxHero() {
   const [isScrolled, setIsScrolled] = useState(false)
-  // track leaf phase for internal transforms only (kept for future tuning)
+  const [isLeafPhase, setIsLeafPhase] = useState(true)
   const { scrollY } = useScroll()
   const MAX_PHASE_SCROLL = 750
   
