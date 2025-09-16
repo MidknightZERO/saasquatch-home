@@ -18,22 +18,24 @@ export default function Header() {
   const { scrollY } = useScroll()
   
   // Delay header appearance until hero leaves are gone
-  const APPEAR_START = 750
-  const APPEAR_END = 850
-  // Increase hysteresis so fast upward scrolls don't flash the header
-  const HIDE_THRESHOLD = 680
+  // Show only after we're well past the hero; hide only when far above
+  const APPEAR_SHOW = 820
+  const APPEAR_END = 900
+  const HIDE_THRESHOLD = 600
+  let rafId: number | null = null
   const logoScale = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
   const logoOpacity = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
 
   useEffect(() => {
     const unsubscribe = scrollY.on('change', (latest) => {
-      setShowLogo((prev) => {
-        if (prev) {
-          // currently visible: hide only once we cross below hide threshold
-          return latest > HIDE_THRESHOLD
-        }
-        // currently hidden: show only after appear threshold
-        return latest > APPEAR_START
+      if (rafId) cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(() => {
+        setShowLogo((prev) => {
+          if (prev) {
+            return latest > HIDE_THRESHOLD
+          }
+          return latest > APPEAR_SHOW
+        })
       })
     })
     

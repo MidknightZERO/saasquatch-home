@@ -156,7 +156,7 @@ export default function ParallaxHero() {
         initial={{ opacity: 1, y: 0 }}
         animate={{ opacity: isScrolled ? 0 : 1, y: isScrolled ? 20 : 0 }}
         transition={{ duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center text-white"
+        className="absolute bottom-8 inset-x-0 mx-auto w-max z-30 flex flex-col items-center text-white px-4"
       >
         <span className="text-sm mb-2">Scroll to explore</span>
         <motion.div
