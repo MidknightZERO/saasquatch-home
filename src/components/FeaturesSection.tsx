@@ -91,7 +91,7 @@ export default function FeaturesSection() {
                 style={{ opacity, y }}
                 className="text-center group"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-pine-400 to-campfire-400 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#fcb52c' }}>
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-dark mb-4">
