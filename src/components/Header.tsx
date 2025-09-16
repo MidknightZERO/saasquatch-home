@@ -52,7 +52,7 @@ export default function Header() {
         y: showLogo ? 0 : -100
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
+      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md relative"
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-16 items-center justify-between">
@@ -175,6 +175,8 @@ export default function Header() {
           )}
         </AnimatePresence>
       </nav>
+      {/* Multicolor divider stuck to header bottom */}
+      <div className="color-stripe absolute left-0 right-0 bottom-0" />
     </motion.header>
   )
 }

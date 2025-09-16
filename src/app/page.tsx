@@ -20,6 +20,8 @@ export default function HomePage() {
               <FeaturesSection />
             </div>
           </HeroReveal>
+          {/* Divider before Choose Your Own Adventure */}
+          <div className="color-stripe my-8" />
           {/* Choose Your Own Adventure (Pricing Overview) */}
           <div className="section-wave-3">
             <PricingOverview />

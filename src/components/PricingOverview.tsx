@@ -8,10 +8,11 @@ import { pricingTiers, formatCurrency } from '@/utils/currency'
 export default function PricingOverview() {
   const tiers = Object.entries(pricingTiers)
   const { scrollY } = useScroll()
+  // Push thresholds further so header remains visible during reveals
   const windows = [
-    { start: 1300, end: 1450 },
-    { start: 1480, end: 1630 },
-    { start: 1660, end: 1810 },
+    { start: 1500, end: 1670 },
+    { start: 1700, end: 1870 },
+    { start: 1900, end: 2070 },
   ]
 
   // Prepare transforms outside of map
