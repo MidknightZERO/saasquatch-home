@@ -114,6 +114,7 @@ export default function ContactForm() {
                     onChange={handleInputChange}
                     placeholder="John Doe"
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
+                    style={{ color: '#0F172A' }}
                   />
                 </div>
                 
@@ -130,6 +131,7 @@ export default function ContactForm() {
                     onChange={handleInputChange}
                     placeholder="john@company.com"
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
+                    style={{ color: '#0F172A' }}
                   />
                 </div>
               </div>
@@ -146,6 +148,7 @@ export default function ContactForm() {
                   onChange={handleInputChange}
                   placeholder="Your Company Ltd."
                   className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200"
+                  style={{ color: '#0F172A' }}
                 />
               </div>
 
@@ -185,6 +188,7 @@ export default function ContactForm() {
                   onChange={handleInputChange}
                   placeholder="Hi SaaSquatch team, I'm looking for a..."
                   className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200 resize-vertical"
+                  style={{ color: '#0F172A' }}
                 />
               </div>
 
