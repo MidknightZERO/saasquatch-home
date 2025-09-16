@@ -23,8 +23,8 @@ export default function Header() {
   const APPEAR_END = 900
   const HIDE_THRESHOLD = 600
   let rafId: number | null = null
-  const logoScale = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
-  const logoOpacity = useTransform(scrollY, [APPEAR_START, APPEAR_END], [0, 1])
+  const logoScale = useTransform(scrollY, [APPEAR_SHOW, APPEAR_END], [0, 1])
+  const logoOpacity = useTransform(scrollY, [APPEAR_SHOW, APPEAR_END], [0, 1])
 
   useEffect(() => {
     const unsubscribe = scrollY.on('change', (latest) => {
