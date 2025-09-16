@@ -78,7 +78,7 @@ export default function ContactForm() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-dark">
               Let's Build Something{' '}
               <span className="gradient-text">Amazing</span> Together
             </h2>
@@ -163,11 +163,12 @@ export default function ContactForm() {
                     updateMessage()
                   }}
                   className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200 appearance-none cursor-pointer"
+                  style={{ color: '#0F172A' }}
                 >
-                  <option value="" className="bg-white text-dark">Select a service...</option>
-                  <option value="Basic Website" className="bg-white text-dark">Basic Website</option>
-                  <option value="e-Commerce Store" className="bg-white text-dark">e-Commerce Store</option>
-                  <option value="Custom Software" className="bg-white text-dark">Custom Software</option>
+                  <option value="" className="bg-white text-dark" style={{ color: '#0F172A' }}>Select a service...</option>
+                  <option value="Basic Website" className="bg-white text-dark" style={{ color: '#0F172A' }}>Basic Website</option>
+                  <option value="e-Commerce Store" className="bg-white text-dark" style={{ color: '#0F172A' }}>e-Commerce Store</option>
+                  <option value="Custom Software" className="bg-white text-dark" style={{ color: '#0F172A' }}>Custom Software</option>
                 </select>
               </div>
 
