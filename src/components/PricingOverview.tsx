@@ -1,11 +1,36 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { pricingTiers, formatCurrency } from '@/utils/currency'
 
 export default function PricingOverview() {
   const tiers = Object.entries(pricingTiers)
+  const { scrollY } = useScroll()
+  const windows = [
+    { start: 1300, end: 1450 },
+    { start: 1480, end: 1630 },
+    { start: 1660, end: 1810 },
+  ]
+  const lockedRef = useRef(false)
+  useEffect(() => {
+    const unsub = scrollY.on('change', (v) => {
+      // Lock briefly when each card begins
+      windows.forEach((w, i) => {
+        if (!lockedRef.current && v >= w.start && v <= w.start + 40) {
+          lockedRef.current = true
+          const prev = document.body.style.overflow
+          document.body.style.overflow = 'hidden'
+          setTimeout(() => {
+            document.body.style.overflow = prev
+            setTimeout(() => (lockedRef.current = false), 400)
+          }, 500)
+        }
+      })
+    })
+    return () => unsub()
+  }, [scrollY])
 
   return (
     <section className="section bg-gray-50">
@@ -20,16 +45,18 @@ export default function PricingOverview() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {tiers.map(([key, tier], index) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+          {tiers.map(([key, tier], index) => {
+            const w = windows[index]
+            const opacity = useTransform(scrollY, [w.start, w.end], [0, 1])
+            const y = useTransform(scrollY, [w.start, w.end], [60, 0])
+            return (
+              <motion.div
+                key={key}
+                style={{ opacity, y }}
               className={`relative card-hover ${
                 (tier as any).popular ? 'ring-2 ring-pine-400 shadow-glow-pine' : ''
               }`}
-            >
+              >
               {(tier as any).popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <span className="bg-gradient-to-r from-pine-400 to-campfire-400 text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -99,8 +126,9 @@ export default function PricingOverview() {
                   {tier.cta}
                 </Link>
               </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
 
         <div className="text-center mt-12">

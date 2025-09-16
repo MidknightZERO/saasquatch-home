@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 const features = [
   {
@@ -40,6 +41,34 @@ export default function FeaturesSection() {
     { start: 850, end: 1000 },  // Card 2 (begins ~2 wheel notches later)
     { start: 1050, end: 1200 }, // Card 3
   ]
+
+  // Prepare motion values outside of loops to satisfy hooks rules
+  const f0Opacity = useTransform(scrollY, [windows[0].start, windows[0].end], [0, 1])
+  const f0Y = useTransform(scrollY, [windows[0].start, windows[0].end], [60, 0])
+  const f1Opacity = useTransform(scrollY, [windows[1].start, windows[1].end], [0, 1])
+  const f1Y = useTransform(scrollY, [windows[1].start, windows[1].end], [60, 0])
+  const f2Opacity = useTransform(scrollY, [windows[2].start, windows[2].end], [0, 1])
+  const f2Y = useTransform(scrollY, [windows[2].start, windows[2].end], [60, 0])
+
+  // Single scroll lock as the final card begins revealing
+  const lockedRef = useRef(false)
+  useEffect(() => {
+    const unsub = scrollY.on('change', (v) => {
+      if (!lockedRef.current && v >= windows[2].start && v <= windows[2].end) {
+        lockedRef.current = true
+        const prev = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        setTimeout(() => {
+          document.body.style.overflow = prev
+          // allow future locks only after leaving the section
+          setTimeout(() => {
+            lockedRef.current = false
+          }, 800)
+        }, 600)
+      }
+    })
+    return () => unsub()
+  }, [scrollY])
   return (
     <section className="section bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,9 +83,8 @@ export default function FeaturesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {features.map((feature, index) => {
-            const win = windows[index]
-            const opacity = useTransform(scrollY, [win.start, win.end], [0, 1])
-            const y = useTransform(scrollY, [win.start, win.end], [60, 0])
+            const opacity = [f0Opacity, f1Opacity, f2Opacity][index]
+            const y = [f0Y, f1Y, f2Y][index]
             return (
               <motion.div
                 key={feature.title}

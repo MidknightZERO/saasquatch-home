@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import Image from 'next/image'
 
 export default function ParallaxHero() {
   const [isScrolled, setIsScrolled] = useState(false)
+  // track leaf phase for internal transforms only
   const [isLeafPhase, setIsLeafPhase] = useState(true)
   const { scrollY } = useScroll()
   const MAX_PHASE_SCROLL = 750
@@ -57,7 +58,7 @@ export default function ParallaxHero() {
     return () => unsubscribe()
   }, [scrollY])
 
-  // Allow native scrolling (previous interception removed to avoid lockups)
+  // Allow native scrolling (no interception)
 
   return (
     <div className="relative h-screen overflow-hidden bg-gradient-to-br from-pine-50 to-campfire-50">
