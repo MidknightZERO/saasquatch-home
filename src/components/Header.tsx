@@ -23,7 +23,7 @@ export default function Header() {
   // Show only after we're well past the hero; hide only when far above
   const APPEAR_SHOW = 820
   const APPEAR_END = 900
-  const HIDE_THRESHOLD = 600
+  const HIDE_THRESHOLD = 520
   let rafId: number | null = null
   const logoScale = useTransform(scrollY, [APPEAR_SHOW, APPEAR_END], [0, 1])
   const logoOpacity = useTransform(scrollY, [APPEAR_SHOW, APPEAR_END], [0, 1])
@@ -52,7 +52,6 @@ export default function Header() {
         y: showLogo ? 0 : -100
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      style={{ visibility: showLogo ? 'visible' : 'hidden' }}
       className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
