@@ -6,6 +6,7 @@ import FeaturesSection from '@/components/FeaturesSection'
 import HeroReveal from '@/components/HeroReveal'
 import AddonsHighlight from '@/components/AddonsHighlight'
 import FinalCTA from '@/components/FinalCTA'
+import FAQ from '@/components/FAQ'
 
 export default function HomePage() {
   return (
@@ -26,6 +27,12 @@ export default function HomePage() {
           {/* Customer Testimonials */}
           <TestimonialCarousel />
           <AddonsHighlight />
+          {/* Multicolor divider showcasing brand palette */}
+          <div className="color-stripe my-12" />
+          {/* FAQ moved from pricing page */}
+          <section id="faq">
+            <FAQ />
+          </section>
           <FinalCTA />
         </Layout>
       </div>

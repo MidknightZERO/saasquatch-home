@@ -136,3 +136,18 @@
     radial-gradient(900px 260px at 100% 70%, rgba(142,108,239,0.10) 0%, rgba(142,108,239,0.00) 60%);
   background-color: #ffffff;
 }
+
+/* Multicolor stripe using provided palette */
+.color-stripe {
+  height: 8px;
+  width: 100%;
+  background: linear-gradient(90deg,
+    #f8539a 0%,
+    #fb6b6e 16%,
+    #2ea4b0 32%,
+    #58ab8b 48%,
+    #fcb52c 64%,
+    #a7a969 80%,
+    #9879b1 100%
+  );
+}
