@@ -17,18 +17,17 @@ export default function ContactForm() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const updateMessage = () => {
-    const { service } = formData
+  const updateMessage = (serviceValue: string) => {
     let messageText = ''
-    
-    if (service === 'Basic Website') {
-      messageText = `Hi SaaSquatch team, I'm looking for a ${service}. `
-    } else if (service === 'e-Commerce Store') {
-      messageText = `Hi SaaSquatch team, I'm looking for an ${service}. `
-    } else if (service === 'Custom Software') {
+
+    if (serviceValue === 'Basic Website') {
+      messageText = `Hi SaaSquatch team, I'm looking for a ${serviceValue}. `
+    } else if (serviceValue === 'e-Commerce Store') {
+      messageText = `Hi SaaSquatch team, I'm looking for an ${serviceValue}. `
+    } else if (serviceValue === 'Custom Software') {
       messageText = `Hi SaaSquatch team, I'm looking for a Custom Software solution. `
     }
-    
+
     if (messageText) {
       setFormData(prev => ({ ...prev, message: messageText }))
     }
@@ -164,7 +163,7 @@ export default function ContactForm() {
                   value={formData.service}
                   onChange={(e) => {
                     handleInputChange(e)
-                    updateMessage()
+                    updateMessage(e.target.value)
                   }}
                   className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl text-dark focus:outline-none focus:ring-2 focus:ring-pine-400 focus:border-transparent transition-all duration-200 appearance-none cursor-pointer"
                   style={{ color: '#0F172A' }}
