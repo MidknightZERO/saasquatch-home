@@ -13,14 +13,14 @@ export default function LeafDivider() {
 
   return (
     <div
-      className="relative select-none overflow-x-hidden overflow-y-visible py-16 md:py-10 z-[60]"
+      className="relative select-none overflow-x-hidden overflow-y-visible py-16 md:py-10 z-[9999]"
       style={edgeMask}
     >
       {/* stripe */}
       <div className="color-stripe h-1 rounded-full max-w-6xl mx-auto" />
 
       {/* flipped leaf group */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center rotate-180">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center rotate-180 z-[9999]">
         {/* Left leaves (visually right after rotate) */}
         <motion.div
           initial={{ y: 10, opacity: 0.95, rotate: -6, scale: 1.1 }}
