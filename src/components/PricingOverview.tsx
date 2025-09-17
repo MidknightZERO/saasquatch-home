@@ -1,45 +1,11 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { pricingTiers, formatCurrency } from '@/utils/currency'
 
 export default function PricingOverview() {
   const tiers = Object.entries(pricingTiers)
-  const { scrollY } = useScroll()
-  // Push thresholds further so header remains visible during reveals
-  const windows = [
-    { start: 1500, end: 1670 },
-    { start: 1700, end: 1870 },
-    { start: 1900, end: 2070 },
-  ]
-
-  // Prepare transforms outside of map
-  const p0Opacity = useTransform(scrollY, [windows[0].start, windows[0].end], [0, 1])
-  const p0Y = useTransform(scrollY, [windows[0].start, windows[0].end], [60, 0])
-  const p1Opacity = useTransform(scrollY, [windows[1].start, windows[1].end], [0, 1])
-  const p1Y = useTransform(scrollY, [windows[1].start, windows[1].end], [60, 0])
-  const p2Opacity = useTransform(scrollY, [windows[2].start, windows[2].end], [0, 1])
-  const p2Y = useTransform(scrollY, [windows[2].start, windows[2].end], [60, 0])
-  const lockedRef = useRef(false)
-  useEffect(() => {
-    const unsub = scrollY.on('change', (v) => {
-      // Lock briefly when each card begins
-      windows.forEach((w) => {
-        if (!lockedRef.current && v >= w.start && v <= w.start + 40) {
-          lockedRef.current = true
-          const prev = document.body.style.overflow
-          document.body.style.overflow = 'hidden'
-          setTimeout(() => {
-            document.body.style.overflow = prev
-            setTimeout(() => (lockedRef.current = false), 400)
-          }, 500)
-        }
-      })
-    })
-    return () => unsub()
-  }, [scrollY, windows])
 
   return (
     <section id="adventure" className="section section-wave-3">
@@ -53,14 +19,17 @@ export default function PricingOverview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {tiers.map(([key, tier], index) => {
-            const opacity = [p0Opacity, p1Opacity, p2Opacity][index]
-            const y = [p0Y, p1Y, p2Y][index]
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        >
+          {tiers.map(([key, tier]) => {
             return (
-              <motion.div
+              <div
                 key={key}
-                style={{ opacity, y }}
               className={`relative card-hover ${
                 (tier as any).popular ? 'ring-2 ring-pine-400 shadow-glow-pine' : ''
               }`}
@@ -134,10 +103,10 @@ export default function PricingOverview() {
                   {tier.cta}
                 </Link>
               </div>
-              </motion.div>
+              </div>
             )
           })}
-        </div>
+        </motion.div>
 
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">

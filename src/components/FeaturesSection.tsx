@@ -1,7 +1,6 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 
 const features = [
   {
@@ -34,41 +33,6 @@ const features = [
 ]
 
 export default function FeaturesSection() {
-  const { scrollY } = useScroll()
-  // Staggered windows with gaps to create a perceptible pause between cards
-  const windows = [
-    { start: 650, end: 800 },   // Card 1
-    { start: 850, end: 1000 },  // Card 2 (begins ~2 wheel notches later)
-    { start: 1050, end: 1200 }, // Card 3
-  ]
-
-  // Prepare motion values outside of loops to satisfy hooks rules
-  const f0Opacity = useTransform(scrollY, [windows[0].start, windows[0].end], [0, 1])
-  const f0Y = useTransform(scrollY, [windows[0].start, windows[0].end], [60, 0])
-  const f1Opacity = useTransform(scrollY, [windows[1].start, windows[1].end], [0, 1])
-  const f1Y = useTransform(scrollY, [windows[1].start, windows[1].end], [60, 0])
-  const f2Opacity = useTransform(scrollY, [windows[2].start, windows[2].end], [0, 1])
-  const f2Y = useTransform(scrollY, [windows[2].start, windows[2].end], [60, 0])
-
-  // Single scroll lock as the final card begins revealing
-  const lockedRef = useRef(false)
-  useEffect(() => {
-    const unsub = scrollY.on('change', (v) => {
-      if (!lockedRef.current && v >= windows[2].start && v <= windows[2].end) {
-        lockedRef.current = true
-        const prev = document.body.style.overflow
-        document.body.style.overflow = 'hidden'
-        setTimeout(() => {
-          document.body.style.overflow = prev
-          // allow future locks only after leaving the section
-          setTimeout(() => {
-            lockedRef.current = false
-          }, 800)
-        }, 600)
-      }
-    })
-    return () => unsub()
-  }, [scrollY, windows])
   return (
     <section id="why" className="section section-wave-2">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,29 +45,27 @@ export default function FeaturesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {features.map((feature, index) => {
-            const opacity = [f0Opacity, f1Opacity, f2Opacity][index]
-            const y = [f0Y, f1Y, f2Y][index]
-            return (
-              <motion.div
-                key={feature.title}
-                style={{ opacity, y }}
-                className="text-center group"
-              >
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#fcb52c' }}>
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-heading font-semibold text-dark mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            )
-          })}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        >
+          {features.map((feature) => (
+            <div key={feature.title} className="text-center group">
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#fcb52c' }}>
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-heading font-semibold text-dark mb-4">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )
