@@ -8,7 +8,6 @@ const BRAND_COLORS = [
   '#2ea4b0',
   '#58ab8b',
   '#fcb52c',
-  '#a7a969',
   '#9879b1',
 ]
 

@@ -13,7 +13,7 @@ export default function LeafDivider() {
 
   return (
     <div
-      className="relative select-none overflow-x-hidden overflow-y-visible py-16 md:py-10 z-20"
+      className="relative select-none overflow-x-hidden overflow-y-visible py-16 md:py-10 z-[60]"
       style={edgeMask}
     >
       {/* stripe */}
