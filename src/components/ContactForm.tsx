@@ -103,7 +103,7 @@ export default function ContactForm() {
             <form action="https://formspree.io/f/mblavdng" method="POST" className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="block text-sm font-semibold text-dark">
+                  <label htmlFor="name" className="block text-sm font-semibold text-[#0F172A]">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -120,7 +120,7 @@ export default function ContactForm() {
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-semibold text-dark">
+                  <label htmlFor="email" className="block text-sm font-semibold text-[#0F172A]">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -138,7 +138,7 @@ export default function ContactForm() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="company" className="block text-sm font-semibold text-dark">
+                <label htmlFor="company" className="block text-sm font-semibold text-[#0F172A]">
                   Company Name
                 </label>
                 <input
@@ -154,7 +154,7 @@ export default function ContactForm() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="service" className="block text-sm font-semibold text-dark">
+                <label htmlFor="service" className="block text-sm font-semibold text-[#0F172A]">
                   Service Type <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -177,7 +177,7 @@ export default function ContactForm() {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="block text-sm font-semibold text-dark">
+                <label htmlFor="message" className="block text-sm font-semibold text-[#0F172A]">
                   Project Details <span className="text-red-500">*</span>
                 </label>
                 <textarea
