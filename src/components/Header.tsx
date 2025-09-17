@@ -52,7 +52,7 @@ export default function Header() {
         y: showLogo ? 0 : -100
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md relative"
+      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md relative mb-2 md:mb-3"
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-16 items-center justify-between">
