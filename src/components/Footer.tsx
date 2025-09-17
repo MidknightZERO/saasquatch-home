@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-pine-400 to-campfire-400 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--brand, #58ab8b)' }}>
                 <svg
                   width="20"
                   height="20"
@@ -159,7 +159,7 @@ export default function Footer() {
             </div>
             <div className="mt-4 md:mt-0 flex items-center space-x-1 text-gray-400 text-sm">
               <span>Made with</span>
-              <svg className="h-4 w-4 text-campfire-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" style={{ color: 'var(--brand, #58ab8b)' }}>
                 <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
               </svg>
               <span>in the UK</span>

@@ -96,7 +96,7 @@ export default function TestimonialCarousel() {
                 </div>
                 
                 <div className="flex items-center justify-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pine-400 to-campfire-400 rounded-full flex items-center justify-center text-white font-semibold">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold" style={{ background: 'var(--brand, #58ab8b)' }}>
                     {testimonials[currentIndex].avatar}
                   </div>
                   <div className="text-left">
@@ -118,11 +118,8 @@ export default function TestimonialCarousel() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-pine-400 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex ? 'w-8' : ''}`}
+                style={{ background: index === currentIndex ? 'var(--brand, #58ab8b)' : '#D1D5DB' }}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}

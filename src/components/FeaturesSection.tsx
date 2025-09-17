@@ -54,7 +54,7 @@ export default function FeaturesSection() {
         >
           {features.map((feature) => (
             <div key={feature.title} className="text-center group">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: '#fcb52c' }}>
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300" style={{ background: 'var(--brand, #58ab8b)' }}>
                 {feature.icon}
               </div>
               <h3 className="text-xl font-heading font-semibold text-dark mb-4">

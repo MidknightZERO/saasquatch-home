@@ -36,7 +36,7 @@ export default function PricingOverview() {
               >
               {(tier as any).popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-pine-400 to-campfire-400 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  <span className="text-white px-4 py-1 rounded-full text-sm font-semibold" style={{ background: 'var(--brand, #58ab8b)' }}>
                     Most Popular
                   </span>
                 </div>
@@ -73,7 +73,8 @@ export default function PricingOverview() {
                   {tier.features.slice(0, 4).map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center space-x-3">
                       <svg
-                        className="w-5 h-5 text-pine-400 flex-shrink-0"
+                        className="w-5 h-5 flex-shrink-0"
+                        style={{ color: 'var(--brand, #58ab8b)' }}
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         aria-hidden="true"

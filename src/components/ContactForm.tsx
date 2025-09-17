@@ -194,7 +194,8 @@ export default function ContactForm() {
 
               <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-pine-400 to-campfire-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-lg hover:shadow-pine-400/25 transition-all duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                className="w-full text-white font-semibold py-4 px-8 rounded-xl transition-all duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                style={{ background: 'var(--brand, #58ab8b)', boxShadow: '0 10px 25px rgba(88,171,139,0.25)' }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
