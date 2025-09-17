@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export default function LeafDivider() {
   return (
-    <div className="relative py-10 select-none overflow-visible">
+    <div className="relative select-none overflow-hidden py-16 md:py-10">
       {/* stripe */}
       <div className="color-stripe h-1 rounded-full max-w-6xl mx-auto" />
 
@@ -48,8 +48,8 @@ export default function LeafDivider() {
 
         {/* subtle edge fade to hide any remaining artifacting */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[rgba(255,255,255,0.7)] to-transparent" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[rgba(255,255,255,0.7)] to-transparent" />
+          <div className="absolute left-0 top-0 bottom-0 w-4 bg-white/60" />
+          <div className="absolute right-0 top-0 bottom-0 w-4 bg-white/60" />
         </div>
       </div>
     </div>
