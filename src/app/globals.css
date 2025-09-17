@@ -156,5 +156,13 @@
 .color-stripe {
   height: 8px;
   width: 100%;
-  background: var(--brand, #58ab8b);
+  background: linear-gradient(90deg,
+    #f8539a 0%,
+    #fb6b6e 16%,
+    #2ea4b0 32%,
+    #58ab8b 48%,
+    #fcb52c 64%,
+    #a7a969 80%,
+    #9879b1 100%
+  );
 }
