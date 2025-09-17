@@ -3,8 +3,19 @@
 import { motion } from 'framer-motion'
 
 export default function LeafDivider() {
+  // Fade the edges without hiding the content by using a CSS mask
+  const edgeMask = {
+    WebkitMaskImage:
+      'linear-gradient(90deg, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 24px, rgba(0,0,0,1) calc(100% - 24px), rgba(0,0,0,0) 100%)',
+    maskImage:
+      'linear-gradient(90deg, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 24px, rgba(0,0,0,1) calc(100% - 24px), rgba(0,0,0,0) 100%)',
+  } as React.CSSProperties
+
   return (
-    <div className="relative select-none overflow-hidden py-16 md:py-10">
+    <div
+      className="relative select-none overflow-x-hidden overflow-y-visible py-16 md:py-10 z-20"
+      style={edgeMask}
+    >
       {/* stripe */}
       <div className="color-stripe h-1 rounded-full max-w-6xl mx-auto" />
 
@@ -46,11 +57,7 @@ export default function LeafDivider() {
           />
         </motion.div>
 
-        {/* subtle edge fade to hide any remaining artifacting */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute left-0 top-0 bottom-0 w-4 bg-white/60" />
-          <div className="absolute right-0 top-0 bottom-0 w-4 bg-white/60" />
-        </div>
+        {/* mask handles edge fade; no extra overlays needed */}
       </div>
     </div>
   )
