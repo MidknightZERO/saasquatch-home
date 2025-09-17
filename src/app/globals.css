@@ -89,7 +89,8 @@
   }
 
   .btn-primary {
-    @apply btn bg-pine-400 text-white hover:bg-pine-500 focus:ring-pine-400 active:scale-95;
+    @apply btn text-white active:scale-95;
+    background: var(--brand, #58ab8b);
   }
 
   .btn-secondary {
@@ -97,7 +98,9 @@
   }
 
   .btn-outline {
-    @apply btn border-2 border-pine-400 text-pine-400 hover:bg-pine-400 hover:text-white focus:ring-pine-400;
+    @apply btn border-2 hover:text-white;
+    border-color: var(--brand, #58ab8b);
+    color: var(--brand, #58ab8b);
   }
 
   .card {
@@ -117,7 +120,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(to right, #5e8b7e, #f2a65a);
+    background: var(--brand, #58ab8b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -153,13 +156,5 @@
 .color-stripe {
   height: 8px;
   width: 100%;
-  background: linear-gradient(90deg,
-    #f8539a 0%,
-    #fb6b6e 16%,
-    #2ea4b0 32%,
-    #58ab8b 48%,
-    #fcb52c 64%,
-    #a7a969 80%,
-    #9879b1 100%
-  );
+  background: var(--brand, #58ab8b);
 }
