@@ -25,45 +25,22 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-900 text-white">
+    <footer className="text-black" style={{ background: 'var(--footerBrand, #fb6b6e)' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--brand, #58ab8b)' }}>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="text-white"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M8 12C8 10.8954 8.89543 10 10 10H14C15.1046 10 16 10.8954 16 12V16C16 17.1046 15.1046 18 14 18H10C8.89543 18 8 17.1046 8 16V12Z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M6 8C6 6.89543 6.89543 6 8 6H16C17.1046 6 18 6.89543 18 8V10C18 11.1046 17.1046 12 16 12H8C6.89543 12 6 11.1046 6 10V8Z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M4 4C4 2.89543 4.89543 2 6 2H18C19.1046 2 20 2.89543 20 4V6C20 7.1046 19.1046 8 18 8H6C4.89543 8 4 7.1046 4 6V4Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </div>
-              <span className="text-xl font-heading font-bold">SaaSquatch</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <img src="/Logo.svg" alt="SaaSquatch" width={32} height={32} className="w-8 h-8" />
             </div>
-            <p className="text-gray-300 mb-6 max-w-md">
+            <p className="text-black/80 mb-6 max-w-md">
               Websites that grow with your business. From fast static sites to full e-commerce and custom software—built, hosted, and supported by SaaSquatch.
             </p>
             <div className="flex space-x-4">
               {/* Social media placeholders */}
               <a
                 href="#"
-                className="text-gray-400 hover:text-pine-400 transition-colors duration-200"
+                className="text-black/70 hover:text-black transition-colors duration-200"
                 aria-label="Twitter"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -72,7 +49,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-pine-400 transition-colors duration-200"
+                className="text-black/70 hover:text-black transition-colors duration-200"
                 aria-label="LinkedIn"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -81,7 +58,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-pine-400 transition-colors duration-200"
+                className="text-black/70 hover:text-black transition-colors duration-200"
                 aria-label="GitHub"
               >
                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -93,7 +70,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-black uppercase tracking-wider mb-4">
               Services
             </h3>
             <ul className="space-y-3">
@@ -101,7 +78,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-pine-400 transition-colors duration-200"
+                    className="text-black/80 hover:text-black transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -112,7 +89,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-black uppercase tracking-wider mb-4">
               Company
             </h3>
             <ul className="space-y-3">
@@ -120,7 +97,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-pine-400 transition-colors duration-200"
+                    className="text-black/80 hover:text-black transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -131,7 +108,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-black uppercase tracking-wider mb-4">
               Legal
             </h3>
             <ul className="space-y-3">
@@ -139,7 +116,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-pine-400 transition-colors duration-200"
+                    className="text-black/80 hover:text-black transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -150,14 +127,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-12 pt-8 border-t border-black/20">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 text-gray-400 text-sm">
+            <div className="flex items-center space-x-2 text-black/70 text-sm">
               <span>© 2024 SaaSquatch. All rights reserved.</span>
               <span className="hidden md:inline">•</span>
               <span className="hidden md:inline">Prices exclude VAT</span>
             </div>
-            <div className="mt-4 md:mt-0 flex items-center space-x-1 text-gray-400 text-sm">
+            <div className="mt-4 md:mt-0 flex items-center space-x-1 text-black/70 text-sm">
               <span>Made with</span>
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true" style={{ color: 'var(--brand, #58ab8b)' }}>
                 <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />

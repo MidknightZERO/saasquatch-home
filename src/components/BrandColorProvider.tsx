@@ -14,8 +14,13 @@ const BRAND_COLORS = [
 
 export default function BrandColorProvider() {
   useEffect(() => {
-    const color = BRAND_COLORS[Math.floor(Math.random() * BRAND_COLORS.length)]
-    document.documentElement.style.setProperty('--brand', color)
+    const brand = BRAND_COLORS[Math.floor(Math.random() * BRAND_COLORS.length)]
+    let footerBrand = BRAND_COLORS[Math.floor(Math.random() * BRAND_COLORS.length)]
+    if (footerBrand === brand) {
+      footerBrand = BRAND_COLORS[(BRAND_COLORS.indexOf(brand) + 1) % BRAND_COLORS.length]
+    }
+    document.documentElement.style.setProperty('--brand', brand)
+    document.documentElement.style.setProperty('--footerBrand', footerBrand)
   }, [])
   return null
 }
