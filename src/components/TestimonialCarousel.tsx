@@ -57,7 +57,7 @@ export default function TestimonialCarousel() {
   return (
     <section className="section bg-white relative overflow-hidden">
       {/* Right leaf decoration */}
-      <div className="absolute right-[-12%] top-1/2 -translate-y-1/2 w-[30vw] h-auto pointer-events-none z-10">
+      <div className="absolute right-[-12%] top-1/2 -translate-y-1/2 w-[50vw] md:w-[30vw] h-auto pointer-events-none z-10">
         <motion.div
           animate={{
             rotate: [0, 10, 0],

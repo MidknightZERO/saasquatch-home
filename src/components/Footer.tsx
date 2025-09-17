@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <img src="/Logo.svg" alt="SaaSquatch" width={32} height={32} className="w-8 h-8" />
+              <img src="/Logo.svg" alt="SaaSquatch" width={48} height={48} className="w-10 h-10 md:w-12 md:h-12" />
             </div>
             <p className="text-black/80 mb-6 max-w-md">
               Websites that grow with your business. From fast static sites to full e-commerce and custom software—built, hosted, and supported by SaaSquatch.
