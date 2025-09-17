@@ -20,6 +20,14 @@ export default function BrandColorProvider() {
     }
     document.documentElement.style.setProperty('--brand', brand)
     document.documentElement.style.setProperty('--footerBrand', footerBrand)
+
+    const handleContext = (e: MouseEvent) => {
+      e.preventDefault()
+    }
+    document.addEventListener('contextmenu', handleContext)
+    return () => {
+      document.removeEventListener('contextmenu', handleContext)
+    }
   }, [])
   return null
 }
