@@ -70,9 +70,9 @@ export default function Header() {
                 <Image
                   src="/Logo.svg"
                   alt="SaaSquatch Logo"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 object-contain"
+                  width={28}
+                  height={28}
+                  className="w-7 h-7 md:w-8 md:h-8 object-contain"
                 />
                 <span className="text-xl font-heading font-bold text-dark">
                   SaaSquatch
@@ -90,9 +90,9 @@ export default function Header() {
                     <Image
                       src="/Logo.svg"
                       alt="SaaSquatch Logo"
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
+                      width={28}
+                      height={28}
+                      className="w-7 h-7 md:w-8 md:h-8 object-contain"
                     />
                     <span className="text-xl font-heading font-bold text-dark">
                       SaaSquatch

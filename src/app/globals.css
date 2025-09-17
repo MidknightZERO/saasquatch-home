@@ -25,20 +25,19 @@
   }
 
 /* Left side vertical bar using footer brand color */
-body::before {
-  content: '';
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 6px;
-  background: var(--footerBrand, #fb6b6e);
-  pointer-events: none;
-  z-index: 40;
-}
-
+/* Mobile-only thin sidebar */
 @media (max-width: 640px) {
-  body::before { width: 3px; }
+  body::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--footerBrand, #fb6b6e);
+    pointer-events: none;
+    z-index: 40;
+  }
 }
 
   h1, h2, h3, h4, h5, h6 {
