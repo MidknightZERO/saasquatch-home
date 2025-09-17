@@ -11,7 +11,7 @@ export default function ParallaxHero() {
   const [mobileScaleFactor, setMobileScaleFactor] = useState(1)
   
   // Transform values for parallax effects
-  const rawLogoScale = useTransform(scrollY, [0, 450], [1, 0.15])
+  const rawLogoScale = useTransform(scrollY, [0, 450], [0.9, 0.13])
   const rawLogoY = useTransform(scrollY, [0, 450], [0, -220])
   const rawLogoOpacity = useTransform(scrollY, [0, 380], [1, 0])
   const springCfg = { stiffness: 140, damping: 24, mass: 0.25 }
@@ -60,7 +60,7 @@ export default function ParallaxHero() {
 
   useEffect(() => {
     const handle = () => {
-      setMobileScaleFactor(window.innerWidth < 640 ? 0.8 : 1)
+      setMobileScaleFactor(window.innerWidth < 640 ? 0.75 : 1)
     }
     handle()
     window.addEventListener('resize', handle)
@@ -142,7 +142,7 @@ export default function ParallaxHero() {
             alt="SaaSquatch Logo"
             width={600}
             height={400}
-            className="w-auto h-[400px] object-contain drop-shadow-2xl"
+            className="w-auto h-[320px] sm:h-[360px] md:h-[400px] object-contain drop-shadow-2xl"
             priority
           />
           

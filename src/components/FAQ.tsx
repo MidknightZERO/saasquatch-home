@@ -66,7 +66,7 @@ export default function FAQ() {
   return (
     <section className="section bg-white relative overflow-hidden">
       {/* Left leaf decoration */}
-      <div className="absolute left-[-12%] top-1/2 -translate-y-1/2 w-[50vw] md:w-[30vw] h-auto pointer-events-none z-10">
+      <div className="absolute left-[-12%] top-1/2 -translate-y-1/2 w-[100vw] md:w-[30vw] h-auto pointer-events-none z-10">
         <motion.div
           animate={{
             rotate: [0, -10, 0],
