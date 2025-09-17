@@ -5,7 +5,6 @@ import PricingOverview from '@/components/PricingOverview'
 import FeaturesSection from '@/components/FeaturesSection'
 import HeroReveal from '@/components/HeroReveal'
 import AddonsHighlight from '@/components/AddonsHighlight'
-import LeafDivider from '@/components/LeafDivider'
 import ContactForm from '@/components/ContactForm'
 import FAQ from '@/components/FAQ'
 
@@ -30,8 +29,6 @@ export default function HomePage() {
           {/* Customer Testimonials */}
           <TestimonialCarousel />
           <AddonsHighlight />
-          {/* Leaf divider between sections */}
-          <LeafDivider />
           {/* FAQ moved from pricing page */}
           <section id="faq">
             <FAQ />

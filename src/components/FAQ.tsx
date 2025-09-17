@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 const faqs = [
   {
@@ -63,8 +64,32 @@ export default function FAQ() {
   }
 
   return (
-    <section className="section bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section bg-white relative overflow-hidden">
+      {/* Left leaf decoration */}
+      <div className="absolute left-[-15%] top-1/2 -translate-y-1/2 w-[40vw] h-auto pointer-events-none z-10">
+        <motion.div
+          animate={{
+            rotate: [0, -10, 0],
+            y: [0, -10, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 0.5,
+          }}
+        >
+          <Image
+            src="/left-cropped.svg"
+            alt="Left Leaf"
+            width={1000}
+            height={1000}
+            className="w-full h-full object-contain transform rotate-180 scale-[1.2]"
+          />
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
             Frequently asked questions

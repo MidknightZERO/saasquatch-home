@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 const testimonials = [
   {
@@ -54,8 +55,32 @@ export default function TestimonialCarousel() {
   }
 
   return (
-    <section className="section bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section bg-white relative overflow-hidden">
+      {/* Right leaf decoration */}
+      <div className="absolute right-[-15%] top-1/2 -translate-y-1/2 w-[40vw] h-auto pointer-events-none z-10">
+        <motion.div
+          animate={{
+            rotate: [0, 10, 0],
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 0.8,
+          }}
+        >
+          <Image
+            src="/right-cropped.svg"
+            alt="Right Leaf"
+            width={1000}
+            height={1000}
+            className="w-full h-full object-contain transform rotate-180 scale-[1.2]"
+          />
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-dark mb-4">
             What our clients say
