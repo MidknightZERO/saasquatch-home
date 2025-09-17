@@ -78,9 +78,10 @@ export default function ContactForm() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-dark">
-              Let's Build Something{' '}
-              <span className="gradient-text">Amazing</span> Together
+            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-dark inline-block bg-white px-4 py-2 rounded-xl">
+              <span className="text-dark">Let's Build Something </span>
+              <span className="gradient-text">Amazing</span>
+              <span className="text-dark"> Together</span>
             </h2>
             <p className="text-xl text-gray-300 mb-2">
               Get a free consultation and quote for your project
