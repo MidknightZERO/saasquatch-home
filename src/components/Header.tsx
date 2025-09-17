@@ -6,12 +6,12 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
-const navigation = [
+  const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Why choose', href: '/#why' },
   { name: 'Adventure', href: '/#adventure' },
   { name: 'FAQ', href: '/#faq' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 export default function Header() {
@@ -115,7 +115,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="/#contact"
               className="btn-primary"
             >
               Get a quote
@@ -163,7 +163,7 @@ export default function Header() {
                 ))}
                 <div className="pt-2">
                   <Link
-                    href="/contact"
+                    href="/#contact"
                     className="btn-primary w-full justify-center"
                     onClick={() => setMobileMenuOpen(false)}
                   >

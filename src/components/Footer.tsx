@@ -77,7 +77,7 @@ export default function Footer() {
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    href={`/${link.href.split('#')[1] ? `#${link.href.split('#')[1]}` : '#adventure'}`}
                     className="text-black/80 hover:text-black transition-colors duration-200"
                   >
                     {link.name}
@@ -96,7 +96,7 @@ export default function Footer() {
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    href={link.name === 'Contact' ? '/#contact' : '/#why'}
                     className="text-black/80 hover:text-black transition-colors duration-200"
                   >
                     {link.name}

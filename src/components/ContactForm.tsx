@@ -34,7 +34,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="section bg-dark text-white relative overflow-hidden">
+    <section id="contact" className="section bg-dark text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('/hero-bg.svg')] bg-cover bg-center bg-no-repeat transform scale-x-[-1]" />

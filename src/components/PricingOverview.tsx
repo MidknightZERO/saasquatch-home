@@ -96,7 +96,7 @@ export default function PricingOverview() {
                 </ul>
 
                 <Link
-                  href={`/pricing#${key}`}
+                  href={`/#contact`}
                   className={`w-full ${
                     (tier as any).popular ? 'btn-primary' : 'btn-outline'
                   }`}
