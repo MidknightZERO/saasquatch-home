@@ -9,6 +9,7 @@
     scrollbar-gutter: stable both-edges;
     overflow-y: auto;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   * {

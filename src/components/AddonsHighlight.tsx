@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { handleSmoothScroll } from '@/utils/smoothScroll'
 import { addonServices, formatCurrency } from '@/utils/currency'
 
 const featuredAddons = addonServices.slice(0, 6)
@@ -60,24 +60,26 @@ export default function AddonsHighlight() {
                 <span className="text-xs text-gray-500 capitalize">
                   {addon.category}
                 </span>
-                <Link
-                  href="/#contact"
+                <a
+                  href="#contact"
+                  onClick={(e) => handleSmoothScroll(e, 'contact')}
                   className="text-pine-400 hover:text-pine-500 text-sm font-medium transition-colors duration-200"
                 >
                   Learn more →
-                </Link>
+                </a>
               </div>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Link
-            href="/#contact"
+          <a
+            href="#contact"
+            onClick={(e) => handleSmoothScroll(e, 'contact')}
             className="btn-primary"
           >
             View all add-ons
-          </Link>
+          </a>
         </div>
       </div>
     </section>

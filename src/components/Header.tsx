@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { handleSmoothScroll } from '@/utils/smoothScroll'
 
   const navigation = [
-  { name: 'About', href: '/#why' },
-  { name: 'Pricing', href: '/#adventure' },
-  { name: 'FAQ', href: '/#faq' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'About', href: '#why', id: 'why' },
+  { name: 'Pricing', href: '#adventure', id: 'adventure' },
+  { name: 'FAQ', href: '#faq', id: 'faq' },
+  { name: 'Contact', href: '#contact', id: 'contact' },
 ]
 
 export default function Header() {
@@ -105,20 +105,22 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             {navigation.map((item) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleSmoothScroll(e, item.id)}
                 className="text-gray-600 hover:text-pine-400 transition-colors duration-200 font-medium"
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
-            <Link
-              href="/#contact"
+            <a
+              href="#contact"
+              onClick={(e) => handleSmoothScroll(e, 'contact')}
               className="btn-primary"
             >
               Get a quote
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -151,23 +153,29 @@ export default function Header() {
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
-                  <Link
+                  <a
                     key={item.name}
                     href={item.href}
+                    onClick={(e) => {
+                      handleSmoothScroll(e, item.id)
+                      setMobileMenuOpen(false)
+                    }}
                     className="block px-3 py-2 text-gray-600 hover:text-pine-400 hover:bg-gray-50 rounded-md transition-colors duration-200 font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 ))}
                 <div className="pt-2">
-                  <Link
-                    href="/#contact"
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      handleSmoothScroll(e, 'contact')
+                      setMobileMenuOpen(false)
+                    }}
                     className="btn-primary w-full justify-center"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Get a quote
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>

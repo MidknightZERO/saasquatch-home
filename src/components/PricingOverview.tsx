@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { handleSmoothScroll } from '@/utils/smoothScroll'
 import { pricingTiers, formatCurrency } from '@/utils/currency'
 
 export default function PricingOverview() {
@@ -95,14 +95,15 @@ export default function PricingOverview() {
                   )}
                 </ul>
 
-                <Link
-                  href={`/#contact`}
+                <a
+                  href="#contact"
+                  onClick={(e) => handleSmoothScroll(e, 'contact')}
                   className={`w-full ${
                     (tier as any).popular ? 'btn-primary' : 'btn-outline'
                   }`}
                 >
                   {tier.cta}
-                </Link>
+                </a>
               </div>
               </div>
             )
@@ -113,12 +114,13 @@ export default function PricingOverview() {
           <p className="text-gray-600 mb-4">
             All prices exclude VAT • Clear contracts • No hidden fees
           </p>
-          <Link
-            href="/#contact"
+          <a
+            href="#contact"
+            onClick={(e) => handleSmoothScroll(e, 'contact')}
             className="text-pine-400 hover:text-pine-500 font-semibold transition-colors duration-200"
           >
             View detailed pricing →
-          </Link>
+          </a>
         </div>
       </div>
     </section>

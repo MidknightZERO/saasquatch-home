@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
+import { handleSmoothScroll } from '@/utils/smoothScroll'
 
 const faqs = [
   {
@@ -154,7 +154,8 @@ export default function FAQ() {
             Still have questions? We're here to help!
           </p>
           <a
-            href="/#contact"
+            href="#contact"
+            onClick={(e) => handleSmoothScroll(e, 'contact')}
             className="btn-primary"
           >
             Contact us
