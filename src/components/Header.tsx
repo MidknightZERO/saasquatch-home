@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import DarkModeToggle from './DarkModeToggle'
+import { handleSmoothScroll } from '@/utils/smoothScroll'
 
   const navigation = [
   { name: 'About', href: '#why', id: 'why' },

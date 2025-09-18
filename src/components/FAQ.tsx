@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 import { handleSmoothScroll } from '@/utils/smoothScroll'
 
 const faqs = [
