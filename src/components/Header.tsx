@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { handleSmoothScroll } from '@/utils/smoothScroll'
+import DarkModeToggle from './DarkModeToggle'
 
   const navigation = [
   { name: 'About', href: '#why', id: 'why' },
@@ -51,7 +51,7 @@ export default function Header() {
         y: showLogo ? 0 : -100
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md relative mb-2 md:mb-3"
+      className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md relative mb-2 md:mb-3"
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex h-16 items-center justify-between">
@@ -73,7 +73,7 @@ export default function Header() {
                   height={28}
                   className="w-7 h-7 md:w-8 md:h-8 object-contain"
                 />
-                <span className="text-xl font-heading font-bold text-dark">
+                <span className="text-xl font-heading font-bold text-dark dark:text-white">
                   SaaSquatch
                 </span>
               </motion.div>
@@ -93,7 +93,7 @@ export default function Header() {
                       height={28}
                       className="w-7 h-7 md:w-8 md:h-8 object-contain"
                     />
-                    <span className="text-xl font-heading font-bold text-dark">
+                    <span className="text-xl font-heading font-bold text-dark dark:text-white">
                       SaaSquatch
                     </span>
                   </motion.div>
@@ -109,11 +109,12 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleSmoothScroll(e, item.id)}
-                className="text-gray-600 hover:text-pine-400 transition-colors duration-200 font-medium"
+                className="text-gray-600 dark:text-gray-300 hover:text-pine-400 transition-colors duration-200 font-medium"
               >
                 {item.name}
               </a>
             ))}
+            <DarkModeToggle />
             <a
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, 'contact')}
@@ -127,7 +128,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               type="button"
-              className="p-2 rounded-md text-gray-600 hover:text-pine-400 hover:bg-gray-50 transition-colors duration-200"
+              className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-pine-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle mobile menu"
@@ -149,7 +150,7 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-gray-100"
+              className="md:hidden border-t border-gray-100 dark:border-gray-700"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navigation.map((item) => (
@@ -160,19 +161,20 @@ export default function Header() {
                       handleSmoothScroll(e, item.id)
                       setMobileMenuOpen(false)
                     }}
-                    className="block px-3 py-2 text-gray-600 hover:text-pine-400 hover:bg-gray-50 rounded-md transition-colors duration-200 font-medium"
+                    className="block px-3 py-2 text-gray-600 dark:text-gray-300 hover:text-pine-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors duration-200 font-medium"
                   >
                     {item.name}
                   </a>
                 ))}
-                <div className="pt-2">
+                <div className="pt-2 flex items-center justify-between">
+                  <DarkModeToggle />
                   <a
                     href="#contact"
                     onClick={(e) => {
                       handleSmoothScroll(e, 'contact')
                       setMobileMenuOpen(false)
                     }}
-                    className="btn-primary w-full justify-center"
+                    className="btn-primary flex-1 ml-2 justify-center"
                   >
                     Get a quote
                   </a>
