@@ -61,7 +61,7 @@ export default function AddonsHighlight() {
                   {addon.category}
                 </span>
                 <Link
-                  href="/pricing#addons"
+                  href="/#contact"
                   className="text-pine-400 hover:text-pine-500 text-sm font-medium transition-colors duration-200"
                 >
                   Learn more →
@@ -73,7 +73,7 @@ export default function AddonsHighlight() {
 
         <div className="text-center mt-12">
           <Link
-            href="/pricing#addons"
+            href="/#contact"
             className="btn-primary"
           >
             View all add-ons

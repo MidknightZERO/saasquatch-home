@@ -138,7 +138,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-4 text-gray-600 leading-relaxed">
+                      <div className="px-6 pt-4 pb-4 text-gray-600 leading-relaxed bg-white/80 backdrop-blur-sm">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -154,7 +154,7 @@ export default function FAQ() {
             Still have questions? We're here to help!
           </p>
           <a
-            href="/contact"
+            href="/#contact"
             className="btn-primary"
           >
             Contact us

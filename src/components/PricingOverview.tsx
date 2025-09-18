@@ -114,7 +114,7 @@ export default function PricingOverview() {
             All prices exclude VAT • Clear contracts • No hidden fees
           </p>
           <Link
-            href="/pricing"
+            href="/#contact"
             className="text-pine-400 hover:text-pine-500 font-semibold transition-colors duration-200"
           >
             View detailed pricing →

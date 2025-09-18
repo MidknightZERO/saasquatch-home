@@ -7,9 +7,8 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
   const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Why choose', href: '/#why' },
-  { name: 'Adventure', href: '/#adventure' },
+  { name: 'About', href: '/#why' },
+  { name: 'Pricing', href: '/#adventure' },
   { name: 'FAQ', href: '/#faq' },
   { name: 'Contact', href: '/#contact' },
 ]
